@@ -1,0 +1,8 @@
+# Ignore all bazel-* symlinks.
+exoplanet-ml/bazel-*
+
+get_kepler.sh
+
+astronet-venv
+
+exoplanet-ml/model
