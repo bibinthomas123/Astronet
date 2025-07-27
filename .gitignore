@@ -6,3 +6,7 @@ get_kepler.sh
 astronet-venv
 
 exoplanet-ml/model
+
+kepler
+
+prediction.txt

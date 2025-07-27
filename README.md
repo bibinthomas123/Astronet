@@ -4,7 +4,7 @@ Machine learning models and utilities for exoplanet science.
 
 ## Code Author
 
-Chris Shallue: [@cshallue](https://github.com/cshallue)
+Bibin thomas: [@bibinthomas123](https://github.com/bibinthomas123)
 
 ## Walkthrough
 
