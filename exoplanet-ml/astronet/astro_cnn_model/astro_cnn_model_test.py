@@ -54,6 +54,7 @@ class AstroCNNModelTest(tf.test.TestCase):
     }
     hidden_spec = {
         "time_feature_1": {
+            # CNN parameters
             "cnn_num_blocks": 2,
             "cnn_block_size": 2,
             "cnn_initial_num_filters": 4,
@@ -62,6 +63,11 @@ class AstroCNNModelTest(tf.test.TestCase):
             "convolution_padding": "same",
             "pool_size": 2,
             "pool_strides": 2,
+            
+            # BiLSTM parameters
+            "lstm_units": 64,
+            "sequence_length": 64,
+            "lstm_dropout": 0.1,
         }
     }
     config = configurations.base()
@@ -94,9 +100,21 @@ class AstroCNNModelTest(tf.test.TestCase):
     block_2_conv_2 = variables["time_feature_1_hidden/block_2/conv_2/kernel"]
     self.assertShapeEquals((3, 6, 6), block_2_conv_2)
 
+    # Test BiLSTM layers
+    forward_lstm = variables["time_feature_1_hidden/time_feature_1_bilstm_attention_block/forward_lstm/kernel"]
+    self.assertShapeEquals((64, 64), forward_lstm)  # (input_size, lstm_units)
+
+    backward_lstm = variables["time_feature_1_hidden/time_feature_1_bilstm_attention_block/backward_lstm/kernel"]
+    self.assertShapeEquals((64, 64), backward_lstm)  # (input_size, lstm_units)
+
+    # Test attention layer
+    attention_dense = variables["time_feature_1_hidden/time_feature_1_bilstm_attention_block/attention_score/kernel"]
+    self.assertShapeEquals((128, 1), attention_dense)  # (2*lstm_units, 1)
+
     self.assertItemsEqual(["time_feature_1"],
                           model.time_series_hidden_layers.keys())
-    self.assertShapeEquals((None, 30),
+    # Final output should be (batch_size, 2*lstm_units) due to bidirectional concatenation
+    self.assertShapeEquals((None, 128),
                            model.time_series_hidden_layers["time_feature_1"])
     self.assertEqual(len(model.aux_hidden_layers), 0)
     self.assertIs(model.time_series_hidden_layers["time_feature_1"],

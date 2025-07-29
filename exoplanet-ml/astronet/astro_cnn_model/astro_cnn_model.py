@@ -51,10 +51,59 @@ import tensorflow as tf
 from astronet.astro_model import astro_model
 
 
-class AstroCNNModel(astro_model.AstroModel):
-  """A model for classifying light curves using a convolutional neural net."""
+class BiLSTMAttentionBlock(tf.keras.layers.Layer):
+    """Bidirectional LSTM with attention mechanism."""
+    
+    def __init__(self, hparams, name="bilstm_attention"):
+        super(BiLSTMAttentionBlock, self).__init__(name=name, dtype=tf.float32)
+        self.hparams = hparams
+        
+        # Create LSTM layers with unique names
+        self.forward_lstm = tf.keras.layers.LSTM(
+            units=hparams.lstm_units,
+            return_sequences=True,
+            name='forward_lstm',
+            dtype=tf.float32  # Explicitly use float32
+        )
+        
+        self.backward_lstm = tf.keras.layers.LSTM(
+            units=hparams.lstm_units,
+            return_sequences=True,
+            name='backward_lstm',
+            dtype=tf.float32  # Explicitly use float32
+        )
+        
+        # Attention mechanism
+        self.attention_dense = tf.keras.layers.Dense(1, name='attention_score', dtype=tf.float32)
+        
+    def call(self, inputs):
+        # Ensure inputs are float32
+        inputs = tf.cast(inputs, tf.float32)
+        
+        # Forward LSTM
+        forward_output = self.forward_lstm(inputs)
+        
+        # Backward LSTM - reverse sequence
+        backward_input = tf.reverse(inputs, axis=[1])
+        backward_output = self.backward_lstm(backward_input)
+        backward_output = tf.reverse(backward_output, axis=[1])
+        
+        # Concatenate bidirectional outputs
+        bilstm_output = tf.concat([forward_output, backward_output], axis=2)
+        
+        # Compute attention scores
+        attention_weights = self.attention_dense(bilstm_output)
+        attention_weights = tf.nn.softmax(attention_weights, axis=1)
+        
+        # Apply attention
+        context_vector = tf.reduce_sum(attention_weights * bilstm_output, axis=1)
+        return tf.cast(context_vector, tf.float32)  # Ensure output is float32
 
-  def _build_cnn_layers(self, inputs, hparams, scope="cnn"):
+
+class AstroCNNModel(astro_model.AstroModel):
+    """A model for classifying light curves using CNN + BiLSTM + Attention."""
+    
+def _build_cnn_layers(self, inputs, hparams, scope="cnn"):
     """Builds convolutional layers.
 
     The layers are defined by convolutional blocks with pooling between blocks
@@ -76,7 +125,7 @@ class AstroCNNModel(astro_model.AstroModel):
     with tf.name_scope(scope):
         # Ensure inputs are Tensor and of correct dtype
         net = tf.convert_to_tensor(inputs)
-        net = tf.cast(net, tf.float32)  # 🔧 Cast to float32 explicitly
+        net = tf.cast(net, tf.float32)  # Cast to float32 to match checkpoint
 
         # Expand dims if needed
         if len(net.shape) == 2:
@@ -95,7 +144,7 @@ class AstroCNNModel(astro_model.AstroModel):
                         kernel_size=int(hparams.cnn_kernel_size),
                         padding=hparams.convolution_padding,
                         activation=tf.nn.relu,
-                        dtype=tf.float32,  # 🔧 Ensure layer variables are float32
+                        dtype=tf.float32,  # Use float32 consistently
                         name="conv_{}".format(j + 1))
                     net = conv_op(net)
 
@@ -114,8 +163,8 @@ class AstroCNNModel(astro_model.AstroModel):
 
     return net
 
-  def build_time_series_hidden_layers(self):
-    """Builds hidden layers for the time series features.
+def build_time_series_hidden_layers(self):
+    """Builds CNN + BiLSTM + Attention layers for the time series features.
 
     Inputs:
       self.time_series_features
@@ -125,9 +174,31 @@ class AstroCNNModel(astro_model.AstroModel):
     """
     time_series_hidden_layers = {}
     for name, time_series in self.time_series_features.items():
-      time_series_hidden_layers[name] = self._build_cnn_layers(
-          inputs=time_series,
-          hparams=self.hparams.time_series_hidden[name],
-          scope=name + "_hidden")
+        # Get hyperparameters for this feature
+        hparams = self.hparams.time_series_hidden[name]
+        
+        with tf.name_scope(name + "_hidden"):
+            # 1. CNN feature extraction
+            cnn_output = self._build_cnn_layers(
+                inputs=time_series,
+                hparams=hparams,
+                scope="cnn"
+            )
+            
+            # Reshape CNN output for BiLSTM
+            # Assuming the CNN output is [batch_size, flattened_features]
+            # We need to reshape it to [batch_size, sequence_length, features]
+            sequence_length = hparams.sequence_length  # You need to add this to hparams
+            feature_dim = cnn_output.shape[-1] // sequence_length
+            bilstm_input = tf.reshape(cnn_output, [-1, sequence_length, feature_dim])
+            
+            # 2. BiLSTM + Attention processing
+            bilstm_attention = BiLSTMAttentionBlock(
+                hparams,
+                name=f"{name}_bilstm_attention"
+            )
+            final_output = bilstm_attention(bilstm_input)
+            
+            time_series_hidden_layers[name] = final_output
 
     self.time_series_hidden_layers = time_series_hidden_layers

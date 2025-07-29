@@ -207,12 +207,13 @@ class AstroModel(object):
                                     axis=1,
                                     name="pre_logits_concat")
 
-    net = pre_logits_concat
+    net = tf.cast(pre_logits_concat, tf.float32)
     with tf.name_scope("pre_logits_hidden"):
       for i in range(self.hparams.num_pre_logits_hidden_layers):
         dense_op = tf.keras.layers.Dense(
             units=self.hparams.pre_logits_hidden_layer_size,
             activation=tf.nn.relu,
+            dtype=tf.float32,
             name="fully_connected_{}".format(i + 1))
         net = dense_op(net)
 
@@ -222,15 +223,17 @@ class AstroModel(object):
           net = dropout_op(net, training=self.is_training)
 
       # Identify the final pre-logits hidden layer as "pre_logits_hidden/final".
-      tf.identity(net, "final")
+      net = tf.identity(net, "final")
 
     # Create the logits.
     dense_op = tf.keras.layers.Dense(
-        units=self.hparams.output_dim, name="logits")
+        units=self.hparams.output_dim,
+        dtype=tf.float32,
+        name="logits")
     logits = dense_op(net)
 
     self.pre_logits_concat = pre_logits_concat
-    self.logits = logits
+    self.logits = tf.cast(logits, tf.float32)
 
   def build_predictions(self):
     """Builds the output predictions and losses.
@@ -281,22 +284,28 @@ class AstroModel(object):
 
     if self.hparams.output_dim == 1:
       # Binary classification.
+      # First, reduce mean across the sequence dimension (dim 1)
+      reduced_logits = tf.reduce_mean(self.logits, axis=1)
+      # Reshape labels to match logits shape
+      target_probabilities = tf.cast(tf.expand_dims(target_probabilities, -1), tf.float32)
       batch_losses = tf.nn.sigmoid_cross_entropy_with_logits(
-          labels=target_probabilities, logits=tf.squeeze(self.logits, [1]))
+          labels=target_probabilities, logits=tf.cast(reduced_logits, tf.float32))
     else:
       # Multi-class classification.
       batch_losses = tf.nn.softmax_cross_entropy_with_logits_v2(
-          labels=target_probabilities, logits=self.logits)
+          labels=tf.cast(target_probabilities, tf.float32), logits=tf.cast(self.logits, tf.float32))
 
     # Compute the weighted mean cross entropy loss.
     weights = self.weights if self.weights is not None else 1.0
+    weights = tf.cast(weights, tf.float32)
+    batch_losses = tf.cast(batch_losses, tf.float32)
     total_loss = tf.losses.compute_weighted_loss(
         losses=batch_losses,
         weights=weights,
         reduction=tf.losses.Reduction.MEAN)
 
     self.batch_losses = batch_losses
-    self.total_loss = total_loss
+    self.total_loss = tf.cast(total_loss, tf.float32)
 
   def build(self):
     """Creates all ops for training, evaluation or inference."""

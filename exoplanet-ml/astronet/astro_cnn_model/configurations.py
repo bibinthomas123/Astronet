@@ -32,9 +32,10 @@ def base():
   """Base configuration for a CNN model with a single global view."""
   config = parent_configs.base()
 
-  # Add configuration for the convolutional layers of the global_view feature.
+  # Add configuration for the CNN + BiLSTM + Attention layers
   config["hparams"]["time_series_hidden"] = {
       "global_view": {
+          # CNN parameters
           "cnn_num_blocks": 5,
           "cnn_block_size": 2,
           "cnn_initial_num_filters": 16,
@@ -43,6 +44,11 @@ def base():
           "convolution_padding": "same",
           "pool_size": 5,
           "pool_strides": 2,
+          
+          # BiLSTM parameters
+          "lstm_units": 64,
+          "sequence_length": 64,  # This should be set based on your input length after CNN processing
+          "lstm_dropout": 0.1,
       },
   }
   config["hparams"]["num_pre_logits_hidden_layers"] = 4
@@ -71,6 +77,7 @@ def local_global():
   # Add configurations for the convolutional layers of time series features.
   config["hparams"]["time_series_hidden"] = {
       "local_view": {
+          # CNN parameters
           "cnn_num_blocks": 2,
           "cnn_block_size": 2,
           "cnn_initial_num_filters": 16,
@@ -79,8 +86,14 @@ def local_global():
           "convolution_padding": "same",
           "pool_size": 7,
           "pool_strides": 2,
+          
+          # BiLSTM parameters
+          "lstm_units": 32,  # Smaller for local view
+          "sequence_length": 32,  # Smaller sequence length for local view
+          "lstm_dropout": 0.1,
       },
       "global_view": {
+          # CNN parameters
           "cnn_num_blocks": 5,
           "cnn_block_size": 2,
           "cnn_initial_num_filters": 16,
@@ -89,6 +102,11 @@ def local_global():
           "convolution_padding": "same",
           "pool_size": 5,
           "pool_strides": 2,
+          
+          # BiLSTM parameters
+          "lstm_units": 64,  # Larger for global view
+          "sequence_length": 64,  # Larger sequence length for global view
+          "lstm_dropout": 0.1,
       },
   }
   config["hparams"]["num_pre_logits_hidden_layers"] = 4
