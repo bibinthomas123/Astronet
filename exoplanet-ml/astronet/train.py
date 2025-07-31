@@ -70,7 +70,7 @@ parser.add_argument(
 parser.add_argument(
     "--train_steps",
     type=int,
-    default=625,
+    default=5000,
     help="Total number of steps to train the model for.")
 
 parser.add_argument(

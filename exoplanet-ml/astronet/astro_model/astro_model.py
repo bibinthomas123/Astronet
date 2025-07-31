@@ -284,12 +284,17 @@ class AstroModel(object):
 
     if self.hparams.output_dim == 1:
       # Binary classification.
-      # First, reduce mean across the sequence dimension (dim 1)
-      reduced_logits = tf.reduce_mean(self.logits, axis=1)
-      # Reshape labels to match logits shape
-      target_probabilities = tf.cast(tf.expand_dims(target_probabilities, -1), tf.float32)
+      num_classes = 2
+      target_probabilities = tf.cast(self.labels, tf.float32)
+      
+      # Reshape both logits and labels to shape [batch_size, 1]
+      logits = tf.reshape(self.logits, [-1, 1])
+      target_probabilities = tf.reshape(target_probabilities, [-1, 1])
+      
       batch_losses = tf.nn.sigmoid_cross_entropy_with_logits(
-          labels=target_probabilities, logits=tf.cast(reduced_logits, tf.float32))
+          labels=target_probabilities,
+          logits=tf.cast(logits, tf.float32)
+      )
     else:
       # Multi-class classification.
       batch_losses = tf.nn.softmax_cross_entropy_with_logits_v2(

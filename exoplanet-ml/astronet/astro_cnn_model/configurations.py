@@ -29,10 +29,9 @@ from astronet.astro_model import configurations as parent_configs
 
 
 def base():
-  """Base configuration for a CNN model with a single global view."""
+  """Base configuration for a CNN + BiLSTM model with a single global view."""
   config = parent_configs.base()
 
-  # Add configuration for the CNN + BiLSTM + Attention layers
   config["hparams"]["time_series_hidden"] = {
       "global_view": {
           # CNN parameters
@@ -44,23 +43,25 @@ def base():
           "convolution_padding": "same",
           "pool_size": 5,
           "pool_strides": 2,
-          
+
           # BiLSTM parameters
-          "lstm_units": 64,
-          "sequence_length": 64,  # This should be set based on your input length after CNN processing
-          "lstm_dropout": 0.1,
+          "bilstm_num_layers": 2,
+          "bilstm_units": 128,
+          "bilstm_dropout_rate": 0.3,
+          "bilstm_recurrent_dropout_rate": 0.2,
+          "bilstm_output_mode": "average",  # 'average', 'max_pool', 'last'
       },
   }
+
   config["hparams"]["num_pre_logits_hidden_layers"] = 4
   config["hparams"]["pre_logits_hidden_layer_size"] = 1024
   return config
 
 
 def local_global():
-  """Base configuration for a CNN model with separate local/global views."""
+  """CNN + BiLSTM model with separate local/global views."""
   config = parent_configs.base()
 
-  # Override the model features to be local_view and global_view time series.
   config["inputs"]["features"] = {
       "local_view": {
           "length": 201,
@@ -74,7 +75,6 @@ def local_global():
       },
   }
 
-  # Add configurations for the convolutional layers of time series features.
   config["hparams"]["time_series_hidden"] = {
       "local_view": {
           # CNN parameters
@@ -86,11 +86,13 @@ def local_global():
           "convolution_padding": "same",
           "pool_size": 7,
           "pool_strides": 2,
-          
+
           # BiLSTM parameters
-          "lstm_units": 32,  # Smaller for local view
-          "sequence_length": 32,  # Smaller sequence length for local view
-          "lstm_dropout": 0.1,
+          "bilstm_num_layers": 2,
+          "bilstm_units": 128,
+          "bilstm_dropout_rate": 0.3,
+          "bilstm_recurrent_dropout_rate": 0.2,
+          "bilstm_output_mode": "average",
       },
       "global_view": {
           # CNN parameters
@@ -102,13 +104,22 @@ def local_global():
           "convolution_padding": "same",
           "pool_size": 5,
           "pool_strides": 2,
-          
+
           # BiLSTM parameters
-          "lstm_units": 64,  # Larger for global view
-          "sequence_length": 64,  # Larger sequence length for global view
-          "lstm_dropout": 0.1,
+          "bilstm_num_layers": 2,
+          "bilstm_units": 128,
+          "bilstm_dropout_rate": 0.3,
+          "bilstm_recurrent_dropout_rate": 0.2,
+          "bilstm_output_mode": "average",
       },
   }
+
   config["hparams"]["num_pre_logits_hidden_layers"] = 4
   config["hparams"]["pre_logits_hidden_layer_size"] = 512
+
+  # 🚨 Add these
+  config["hparams"]["output_dim"] = 1
+  config["hparams"]["final_activation"] = "sigmoid"
+  config["hparams"]["model_name"] = "cnn_bilstm"
+
   return config

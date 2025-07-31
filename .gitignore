@@ -10,3 +10,5 @@ exoplanet-ml/model
 kepler
 
 prediction.txt
+
+.vscode/
