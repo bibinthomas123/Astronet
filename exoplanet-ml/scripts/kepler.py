@@ -10,7 +10,6 @@ from lightkurve import search_lightcurve
 BASE_DIR = "C:/Users/bibin.a.thomas/bazel_projects"
 KEPLER_DIR = os.path.join(BASE_DIR, "kepler")
 MODEL_DIR = os.path.join(BASE_DIR, "exoplanet-ml/model")
-PREDICTION_FILE = os.path.join(BASE_DIR, "prediction.txt")
 
 def download_light_curves(kepid):
     print(f"📥 Downloading light curves for KIC {kepid}...")
@@ -51,6 +50,9 @@ def get_transit_params_from_archive(kepid):
         return None
     
     row = df.iloc[0]
+    
+    print(f"✅ Found TCE for KIC {kepid}: Period={row['tce_period']}, T0={row['tce_time0bk']}, Duration={row['tce_duration']}")
+
     return {
         "period": round(row["tce_period"], 5),
         "t0": round(row["tce_time0bk"], 5),
@@ -61,6 +63,8 @@ def run_prediction(kepid, period, t0, duration):
     print(f"\n🚀 Running AstroNet prediction for KIC {kepid}...\n")
 
     image_file = os.path.join(BASE_DIR,"exoplanet-ml","predicted_images", f"kepler-{kepid}.png")
+
+    print(f"Prediction for KIC : {kepid}")
 
     command = [
         "bazel", "run", "//astronet:predict", "--",
@@ -73,24 +77,16 @@ def run_prediction(kepid, period, t0, duration):
         f"--t0={t0}",
         f"--duration={duration}",
         f"--output_image_file={image_file}",
-        f"--output_prediction_file={PREDICTION_FILE}"
     ]
 
     subprocess.run(command)
 
-    # Show prediction output
-    if os.path.exists(PREDICTION_FILE):
-        with open(PREDICTION_FILE, "r") as f:
-            prediction = f.read().strip()
-            print(f"\n✅ Prediction for KIC {kepid}: {prediction}")
-            print(f"🖼️ Saved output image to: {image_file}")
-    else:
-        print("⚠️ Prediction file not found.")
 
 # === MAIN ===
 if __name__ == "__main__":
-    kepid = input("🔭 Enter Kepler ID: ").strip()
-
+    # kepid = input("🔭 Enter Kepler ID: ").strip()
+    kepid = "10797460"  # Example Kepler ID, replace with user input if needed
+ 
     if not kepid.isdigit():
         print("❌ Invalid Kepler ID.")
         exit(1)
