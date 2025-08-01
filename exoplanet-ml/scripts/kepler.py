@@ -77,6 +77,7 @@ def run_prediction(kepid, period, t0, duration):
         f"--t0={t0}",
         f"--duration={duration}",
         f"--output_image_file={image_file}",
+        f"--output_prediction_file={os.path.join(BASE_DIR, 'exoplanet-ml', f'prediction.txt')}"
     ]
 
     subprocess.run(command)
@@ -85,7 +86,7 @@ def run_prediction(kepid, period, t0, duration):
 # === MAIN ===
 if __name__ == "__main__":
     # kepid = input("🔭 Enter Kepler ID: ").strip()
-    kepid = "10797460"  # Example Kepler ID, replace with user input if needed
+    kepid = "9579641"  # Example Kepler ID, replace with user input if needed
  
     if not kepid.isdigit():
         print("❌ Invalid Kepler ID.")

@@ -168,8 +168,22 @@ def main(_):
         score = None
 
     if score is not None:
-        with open("prediction.txt", "w") as f:
+        with open("prediction.txt", "w+") as f:
             f.write(f"{FLAGS.kepler_id} {score:.6f}\n")
+
+    if FLAGS.output_prediction_file:
+        with open(FLAGS.output_prediction_file, "w+") as f:
+            f.write(
+                f"KIC{FLAGS.kepler_id} = {score:.6f}\n" +
+                (f"KIC{FLAGS.kepler_id} = Is a planet candidate\n" if score * 100 > 50
+                else f"KIC{FLAGS.kepler_id} = Not a planet candidate\n")
+        )
+
+
+    if score* 100 > 50:
+        print(f"\nTCE {FLAGS.kepler_id} is a planet candidate with score {score:.6f} (above 50% threshold).")
+    else:
+        print(f"\nTCE {FLAGS.kepler_id} is not a planet candidate with score {score:.6f} (below 50% threshold).")
 
 if __name__ == "__main__":
     tf.logging.set_verbosity(tf.logging.INFO)
