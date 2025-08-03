@@ -1,0 +1,35 @@
+Batch Prediction Test Results
+==================================================
+
+KIC 3832474 (confirmed_planets):
+  Period: 60.3252
+  T0: 183.569
+  Duration: 6.556
+  Result: KIC3832474 = 0.748493
+KIC3832474 = Is a planet candidate
+  Description: Kepler-30c - Confirmed planet
+
+KIC 6922244 (confirmed_planets):
+  Period: 3.5225
+  T0: 131.687
+  Duration: 3.271
+  Result: KIC6922244 = 0.683534
+KIC6922244 = Is a planet candidate
+  Description: Should be planet candidate
+
+KIC 8191672 (confirmed_planets):
+  Period: 3.54846
+  T0: 133.547
+  Duration: 4.561
+  Result: KIC8191672 = 0.856927
+KIC8191672 = Is a planet candidate
+  Description: Known eclipsing binary
+
+KIC 5255552 (false_positives):
+  Period: 32.4555
+  T0: 137.597
+  Duration: 7.404
+  Result: KIC5255552 = 0.004323
+KIC5255552 = Not a planet candidate
+  Description: Complex eclipsing binary
+

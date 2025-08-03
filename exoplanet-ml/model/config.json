@@ -26,32 +26,31 @@
   "hparams": {
     "output_dim": 1,
     "num_pre_logits_hidden_layers": 4,
-    "pre_logits_hidden_layer_size": 512,
-    "pre_logits_dropout_rate": 0.2,
-    "batch_size": 128,
-    "learning_rate": 0.0002,
-    "learning_rate_decay_steps": 1000,
+    "pre_logits_hidden_layer_size": 256,
+    "pre_logits_dropout_rate": 0.3,
+    "batch_size": 64,
+    "learning_rate": 0.0001,
+    "learning_rate_decay_steps": 3000,
     "learning_rate_end_factor": 0.1,
-    "learning_rate_decay_power": 1.0,
-    "weight_decay": 0.0001,
+    "learning_rate_decay_power": 0.5,
+    "weight_decay": 0.0002,
     "label_smoothing": 0.1,
     "optimizer": "adam",
-    "clip_gradient_norm": 5.0,
+    "clip_gradient_norm": 2.0,
     "time_series_hidden": {
       "local_view": {
-        "cnn_num_blocks": 2,
+        "cnn_num_blocks": 3,
         "cnn_block_size": 2,
         "cnn_initial_num_filters": 16,
         "cnn_block_filter_factor": 2,
-        "cnn_kernel_size": 5,
+        "cnn_kernel_size": 3,
         "convolution_padding": "same",
-        "pool_size": 7,
+        "pool_size": 3,
         "pool_strides": 2,
-        "bilstm_num_layers": 2,
-        "bilstm_units": 128,
-        "bilstm_dropout_rate": 0.3,
-        "bilstm_recurrent_dropout_rate": 0.2,
-        "bilstm_output_mode": "average"
+        "bilstm_num_layers": 1,
+        "bilstm_units": 64,
+        "bilstm_dropout_rate": 0.2,
+        "bilstm_recurrent_dropout_rate": 0.15
       },
       "global_view": {
         "cnn_num_blocks": 5,
@@ -65,8 +64,7 @@
         "bilstm_num_layers": 2,
         "bilstm_units": 128,
         "bilstm_dropout_rate": 0.3,
-        "bilstm_recurrent_dropout_rate": 0.2,
-        "bilstm_output_mode": "average"
+        "bilstm_recurrent_dropout_rate": 0.2
       }
     },
     "final_activation": "sigmoid",

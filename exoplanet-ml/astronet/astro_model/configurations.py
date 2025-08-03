@@ -63,19 +63,19 @@ def base():
           # Fully connected layers before the logits layer.
           "num_pre_logits_hidden_layers": 1,
           "pre_logits_hidden_layer_size": 512,
-          "pre_logits_dropout_rate": 0.2,
+          "pre_logits_dropout_rate": 0.3,
 
           # Number of examples per training batch.
-          "batch_size": 128,
+          "batch_size": 64,
 
           # Learning rate parameters.
-          "learning_rate": 2e-4,
-          "learning_rate_decay_steps": 1000,
+          "learning_rate": 1e-4,
+          "learning_rate_decay_steps": 3000,
           "learning_rate_end_factor": 0.1,
-          "learning_rate_decay_power": 1.0,
+          "learning_rate_decay_power": 0.5,
 
           # Weight decay regularization.
-          "weight_decay": 0.0001,
+          "weight_decay": 0.0002,
 
           # Label smoothing regularization.
           "label_smoothing": 0.1,
@@ -84,6 +84,6 @@ def base():
           "optimizer": "adam",
 
           # If not None, gradient norms will be clipped to this value.
-          "clip_gradient_norm": 5.0,
+          "clip_gradient_norm": 2.0,
       }
   }

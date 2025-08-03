@@ -49,7 +49,7 @@ def base():
           "bilstm_units": 128,
           "bilstm_dropout_rate": 0.3,
           "bilstm_recurrent_dropout_rate": 0.2,
-          "bilstm_output_mode": "average",  # 'average', 'max_pool', 'last'
+        #   "bilstm_output_mode": "last",  # 'average', 'max_pool', 'last'
       },
   }
 
@@ -78,21 +78,21 @@ def local_global():
   config["hparams"]["time_series_hidden"] = {
       "local_view": {
           # CNN parameters
-          "cnn_num_blocks": 2,
+          "cnn_num_blocks": 3,
           "cnn_block_size": 2,
           "cnn_initial_num_filters": 16,
           "cnn_block_filter_factor": 2,
-          "cnn_kernel_size": 5,
+          "cnn_kernel_size": 3,
           "convolution_padding": "same",
-          "pool_size": 7,
+          "pool_size": 3,
           "pool_strides": 2,
 
           # BiLSTM parameters
-          "bilstm_num_layers": 2,
-          "bilstm_units": 128,
-          "bilstm_dropout_rate": 0.3,
-          "bilstm_recurrent_dropout_rate": 0.2,
-          "bilstm_output_mode": "average",
+          "bilstm_num_layers": 1,
+          "bilstm_units": 64,
+          "bilstm_dropout_rate": 0.2,
+          "bilstm_recurrent_dropout_rate": 0.15,
+        #   "bilstm_output_mode": "average",
       },
       "global_view": {
           # CNN parameters
@@ -110,12 +110,12 @@ def local_global():
           "bilstm_units": 128,
           "bilstm_dropout_rate": 0.3,
           "bilstm_recurrent_dropout_rate": 0.2,
-          "bilstm_output_mode": "average",
+        #   "bilstm_output_mode": "average",
       },
   }
 
   config["hparams"]["num_pre_logits_hidden_layers"] = 4
-  config["hparams"]["pre_logits_hidden_layer_size"] = 512
+  config["hparams"]["pre_logits_hidden_layer_size"] = 256
 
   # 🚨 Add these
   config["hparams"]["output_dim"] = 1
