@@ -35,6 +35,7 @@ def download_light_curves(kepid):
 
     print(f"✅ Light curves saved to: {target_dir}")
     return target_dir
+
 def get_transit_params_from_archive(kepid):
     print(f"🔍 Fetching TCE parameters for KIC {kepid}...")
     url = f"https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+*+from+q1_q17_dr25_tce+where+kepid={kepid}&format=csv"
@@ -54,16 +55,16 @@ def get_transit_params_from_archive(kepid):
     print(f"✅ Found TCE for KIC {kepid}: Period={row['tce_period']}, T0={row['tce_time0bk']}, Duration={row['tce_duration']}")
 
     return {
-        "period": round(row["tce_period"], 5),
-        "t0": round(row["tce_time0bk"], 5),
-        "duration": round(row["tce_duration"], 5)
+        "period": row["tce_period"],
+        "t0": row["tce_time0bk"],
+        "duration": row["tce_duration"],
     }
 
 def run_prediction(kepid, period, t0, duration):
     print(f"\n🚀 Running AstroNet prediction for KIC {kepid}...\n")
 
-    image_file = os.path.join(BASE_DIR,"exoplanet-ml","predicted_images", f"kepler-{kepid}.png")
-
+    image_file = os.path.join(BASE_DIR,"exoplanet-ml","pipeline","predicted_images", f"kepler-{kepid}.png")
+    
     print(f"Prediction for KIC : {kepid}")
 
     command = [
@@ -85,7 +86,7 @@ def run_prediction(kepid, period, t0, duration):
 # === MAIN ===
 if __name__ == "__main__":
     # kepid = input("🔭 Enter Kepler ID: ").strip()
-    kepid = "11442793"  # Example Kepler ID, replace with user input if needed
+    kepid = "4544670"  # Example Kepler ID, replace with user input if needed
  
     if not kepid.isdigit():
         print("❌ Invalid Kepler ID.")

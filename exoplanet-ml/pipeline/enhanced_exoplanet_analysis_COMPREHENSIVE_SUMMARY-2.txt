@@ -1,0 +1,572 @@
+ULTRA-ENHANCED EXOPLANET DETECTION COMPREHENSIVE SUMMARY
+================================================================================
+
+VALIDATION SUMMARY:
+Total candidates: 200
+GOLD level (>90%): 92
+SILVER level (80-90%): 17
+BRONZE level (70-80%): 4
+
+GOLD-LEVEL EXOPLANET CANDIDATES:
+--------------------------------------------------
+KIC 9664276: 91.4% confidence
+  Period: 62.597 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 3348216: 90.6% confidence
+  Period: 32.511 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 5257082: 90.1% confidence
+  Period: 10.085 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 4474462: 88.2% confidence
+  Period: 12.858 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 3848966: 88.2% confidence
+  Period: 29.768 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 6697817: 87.6% confidence
+  Period: 190.801 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+  → Possible multi-planet system!
+
+KIC 5294945: 87.2% confidence
+  Period: 32.547 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 3219037: 87.1% confidence
+  Period: 10.005 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 5352640: 86.1% confidence
+  Period: 2.942 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 7517261: 85.0% confidence
+  Period: 8.543 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 7256914: 85.0% confidence
+  Period: 2.418 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 9995771: 84.5% confidence
+  Period: 15.062 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 5621333: 84.1% confidence
+  Period: 11.547 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 6792908: 83.9% confidence
+  Period: 10.778 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 11081504: 83.8% confidence
+  Period: 13.123 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 7191646: 83.3% confidence
+  Period: 106.957 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+  → Possible multi-planet system!
+
+KIC 7748487: 82.9% confidence
+  Period: 15.576 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 8628665: 82.6% confidence
+  Period: 10.286 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 8324518: 82.4% confidence
+  Period: 1.629 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 3450040: 82.2% confidence
+  Period: 1.167 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 12109267: 82.1% confidence
+  Period: 79.334 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+  → Possible multi-planet system!
+
+KIC 5126182: 82.0% confidence
+  Period: 13.003 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 5193659: 81.6% confidence
+  Period: 14.320 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 7697103: 80.8% confidence
+  Period: 13.925 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 9230021: 80.5% confidence
+  Period: 15.828 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 8905246: 79.7% confidence
+  Period: 27.637 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 8868364: 79.6% confidence
+  Period: 421.428 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 10555365: 79.2% confidence
+  Period: 5.802 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 7777818: 79.1% confidence
+  Period: 5.782 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 9221528: 79.1% confidence
+  Period: 16.295 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 11967788: 79.1% confidence
+  Period: 4.932 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 8644365: 79.0% confidence
+  Period: 10.548 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 3103212: 79.0% confidence
+  Period: 3.254 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 6359926: 78.9% confidence
+  Period: 49.475 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 9716028: 78.7% confidence
+  Period: 17.373 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 3557560: 78.6% confidence
+  Period: 7.430 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 4773392: 78.6% confidence
+  Period: 170.996 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+  → Possible multi-planet system!
+
+KIC 10120548: 78.4% confidence
+  Period: 8.830 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 11969988: 77.9% confidence
+  Period: 2.191 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 8765560: 77.9% confidence
+  Period: 47.110 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 6197344: 77.8% confidence
+  Period: 36.761 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 9836563: 77.7% confidence
+  Period: 4.727 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 7733731: 77.6% confidence
+  Period: 4.858 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 8330207: 77.6% confidence
+  Period: 1.637 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 9509343: 77.3% confidence
+  Period: 6.393 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 5397166: 77.3% confidence
+  Period: 1.812 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 12456063: 77.3% confidence
+  Period: 17.801 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 6350882: 77.2% confidence
+  Period: 5.044 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 10140274: 77.2% confidence
+  Period: 2.442 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 12021387: 77.1% confidence
+  Period: 241.071 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+  → Possible multi-planet system!
+
+KIC 7918478: 76.0% confidence
+  Period: 9.909 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 4844470: 76.0% confidence
+  Period: 60.533 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+  → Possible multi-planet system!
+
+KIC 5903301: 75.8% confidence
+  Period: 1.160 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 7100673: 75.6% confidence
+  Period: 7.235 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 8564976: 75.6% confidence
+  Period: 152.826 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+  → Possible multi-planet system!
+
+KIC 11970988: 75.5% confidence
+  Period: 2.315 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 5008245: 75.5% confidence
+  Period: 2.607 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 8773015: 75.5% confidence
+  Period: 6.319 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 2997459: 75.1% confidence
+  Period: 16.337 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 10745365: 75.0% confidence
+  Period: 8.917 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 9776794: 73.8% confidence
+  Period: 18.222 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+  → Possible multi-planet system!
+
+KIC 5129453: 73.7% confidence
+  Period: 3.058 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 9474756: 73.7% confidence
+  Period: 17.606 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 5386904: 73.7% confidence
+  Period: 4.859 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 9491832: 72.7% confidence
+  Period: 49.565 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 6223324: 72.6% confidence
+  Period: 1.975 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 6290935: 72.6% confidence
+  Period: 5.533 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 4945764: 72.4% confidence
+  Period: 19.875 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 9474756: 71.6% confidence
+  Period: 6.685 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 6947668: 71.4% confidence
+  Period: 14.055 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 7256914: 71.3% confidence
+  Period: 4.034 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 12737015: 71.2% confidence
+  Period: 24.668 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 5780855: 70.6% confidence
+  Period: 5.676 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 3561464: 70.1% confidence
+  Period: 4.327 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 2852941: 69.6% confidence
+  Period: 2.895 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 5197233: 69.5% confidence
+  Period: 7.016 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 7692093: 69.1% confidence
+  Period: 11.166 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 3937814: 68.6% confidence
+  Period: 8.196 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 8376848: 68.3% confidence
+  Period: 11.493 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 8121328: 68.0% confidence
+  Period: 19.069 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 9536108: 68.0% confidence
+  Period: 10.430 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 9117416: 65.6% confidence
+  Period: 7.644 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 11081504: 53.8% confidence
+  Period: 9.618 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 4548011: 31.4% confidence
+  Period: 9.087 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 3529290: 20.1% confidence
+  Period: 13.728 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 2849140: 17.6% confidence
+  Period: 11.824 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 9967009: 11.1% confidence
+  Period: 12.433 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 9947389: 8.3% confidence
+  Period: 284.727 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+  → Possible multi-planet system!
+
+KIC 9845909: 2.0% confidence
+  Period: 11.571 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 6426592: 1.4% confidence
+  Period: 394.678 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 6058816: 1.3% confidence
+  Period: 4.748 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+
+KIC 7289338: 0.8% confidence
+  Period: 5.775 days
+  Validation level: GOLD
+  Centroid stable: ✓
+  Odd/even consistent: ✓
+

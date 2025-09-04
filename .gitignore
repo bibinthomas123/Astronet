@@ -5,10 +5,27 @@ get_kepler.sh
 
 astronet-venv
 
-exoplanet-ml/model
+exoplanet-ml/model/model-*
 
 kepler
 
 prediction.txt
 
 .vscode/
+
+latte-venv
+
+data
+
+*.png
+
+*.fits
+
+*.csv
+
+*.npy
+
+__pycache__/
+*.pyc
+
+*.log

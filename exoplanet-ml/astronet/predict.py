@@ -178,6 +178,9 @@ def main(_):
                 (f"KIC{FLAGS.kepler_id} = Is a planet candidate\n" if score * 100 > 50
                 else f"KIC{FLAGS.kepler_id} = Not a planet candidate\n")
         )
+    else:
+        print(f"\nKIC{FLAGS.kepler_id} = {score:.6f}")
+        print(f"KIC{FLAGS.kepler_id} = {'Is a planet candidate' if score * 100 > 50 else 'Not a planet candidate'}")
 
 
     if score* 100 > 50:
