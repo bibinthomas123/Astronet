@@ -29,3 +29,11 @@ __pycache__/
 *.pyc
 
 *.log
+
+paper_todo.md
+
+TODO.md
+
+comments.md
+
+*.txt
