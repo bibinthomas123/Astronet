@@ -20,4 +20,4 @@ command to train: bazel run //astronet:train -- `
 
  Saving dict for global step 20000: accuracy/accuracy = 0.95064604, accuracy/num_correct = 13464.0, auc = 0.9839036, confusion_matrix/label_0_pred_0 = 10458.0, confusion_matrix/label_0_pred_1 = 460.0, confusion_matrix/label_1_pred_0 = 239.0, confusion_matrix/label_1_pred_1 = 3006.0, global_step = 20000, loss = 0.13387372, losses/weighted_cross_entropy = 0.1328648, num_examples = 14163.0
 
- removed
+ 
