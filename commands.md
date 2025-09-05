@@ -18,4 +18,6 @@ command to train: bazel run //astronet:train -- `
  accuracy/accuracy = 0.95679796, accuracy/num_correct = 1506.0, auc = 0.9843217, confusion_matrix/label_0_pred_0 = 1167.0, confusion_matrix/label_0_pred_1 = 47.0, confusion_matrix/label_1_pred_0 = 21.0, confusion_matrix/label_1_pred_1 = 339.0, global_step = 20000, loss = 0.12627172, losses/weighted_cross_entropy = 0.12721325, num_examples = 1574.0
 
 
- Saving dict for global step 20000: accuracy/accuracy = 0.95064604, accuracy/num_correct = 13464.0, auc = 0.9839036, confusion_matrix/label_0_pred_0 = 10458.0, confusion_matrix/label_0_pred_1 = 460.0, confusion_matrix/label_1_pred_0 = 239.0, confusion_matrix/label_1_pred_1 = 3006.0, global_step = 20000, loss = 0.13387372, losses/weighted_cross_entropy = 0.1328648, num_examples = 14163.0z
+ Saving dict for global step 20000: accuracy/accuracy = 0.95064604, accuracy/num_correct = 13464.0, auc = 0.9839036, confusion_matrix/label_0_pred_0 = 10458.0, confusion_matrix/label_0_pred_1 = 460.0, confusion_matrix/label_1_pred_0 = 239.0, confusion_matrix/label_1_pred_1 = 3006.0, global_step = 20000, loss = 0.13387372, losses/weighted_cross_entropy = 0.1328648, num_examples = 14163.0
+
+ 
