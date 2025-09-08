@@ -9,7 +9,7 @@ Bibin thomas: bibinthomas951@gmail.com
 
 A paper that summarizes this code is available here and at The Astronomical Journal. Please cite it if you make use of this code:
 
-paper cite
+Thomas, Bibin., Bhat, M. V., Mohammed, S. A., Mohammed, A. W., Dessalegn, A. A., & Mittal, M. (2025). Identifying exoplanets with deep learning: A CNN and RNN classifier for Kepler DR25 and candidate vetting. arXiv preprint arXiv:2509.04793. https://doi.org/10.48550/arXiv.2509.04793
 
 See also the original Shallue & Vanderburg paper:
 
